@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 76.8, "left": -33.56, "attrs": {} },
+    {
+      "type": "wokwi-hx711",
+      "id": "cell1",
+      "top": 50.6,
+      "left": -352.6,
+      "attrs": { "type": "5kg" }
+    },
+    {
+      "type": "wokwi-tm1637-7segment",
+      "id": "sevseg1",
+      "top": -67.24,
+      "left": -376.97,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 100.2, "left": 105.7, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -170.4,
+      "left": -103.8,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -157.2,
+      "left": -5.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -166.8,
+      "left": 90.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 198.2,
+      "left": 144,
+      "attrs": { "color": "yellow", "xray": "1", "key": "2" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -73.4,
+      "left": 18.35,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -73.4,
+      "left": 85.55,
+      "rotate": 270,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 361.6,
+      "left": -388,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 361.4,
+      "left": 134.4,
+      "attrs": { "color": "red", "xray": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "cell1:VCC", "esp:5V", "red", [ "h-28.8", "v172.8" ] ],
+    [ "cell1:GND", "esp:GND.1", "black", [ "h-57.6", "v143.7" ] ],
+    [ "cell1:DT", "esp:5", "blue", [ "h-48", "v85.9", "h249.6", "v-124.8", "h115.2", "v144" ] ],
+    [
+      "cell1:SCK",
+      "esp:18",
+      "green",
+      [ "h-38.4", "v66.4", "h230.4", "v-124.8", "h134.4", "v144" ]
+    ],
+    [ "rtc1:GND", "esp:GND.1", "black", [ "h-38.4", "v220.8", "h-192", "v-76.8" ] ],
+    [ "rtc1:5V", "esp:3V3", "red", [ "h-28.8", "v220.4", "h-278.4", "v-211.2" ] ],
+    [ "rtc1:SDA", "esp:21", "green", [ "h-19.2", "v47.7" ] ],
+    [ "rtc1:SCL", "esp:22", "green", [ "h-48", "v9.4" ] ],
+    [ "bz1:2", "esp:27", "orange", [ "v28.8", "h-38.8", "v163.2", "h9.6" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v9.6", "h-38.4", "v211.2" ] ],
+    [ "led1:A", "r1:2", "magenta", [ "v0" ] ],
+    [ "r1:1", "esp:32", "magenta", [ "v67.2", "h-48", "v134.4" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v9.6", "h-134", "v297.6" ] ],
+    [ "led2:C", "esp:GND.1", "green", [ "v86.4", "h-239.6", "v19.2" ] ],
+    [ "led2:A", "r2:2", "magenta", [ "v0" ] ],
+    [ "r2:1", "esp:33", "magenta", [ "v48", "h-115.2", "v163.2" ] ],
+    [ "btn1:1.l", "esp:26", "yellow", [ "v96", "h-278.55" ] ],
+    [ "btn1:2.r", "esp:GND.1", "black", [ "h-9.4", "v105.8", "h-336", "v-28.8", "h-0.15" ] ],
+    [ "sevseg1:VCC", "esp:3V3", "red", [ "h28.8", "v38.4", "h67.2" ] ],
+    [ "sevseg1:GND", "esp:GND.1", "black", [ "h0", "v57.6", "h48", "v172.8" ] ],
+    [ "sevseg1:CLK", "esp:19", "green", [ "h28.8", "v19.2", "h9.6", "v19.2", "h201.6", "v9.6" ] ],
+    [ "sevseg1:DIO", "esp:23", "blue", [ "h9.6", "v38.4", "h211.2", "v0", "h9.6", "v96" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h0", "v-57.6" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-28.8", "v-57.5", "h336", "v-67.2" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-38.4", "v-76.6", "h537.6", "v-182.4" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h-48", "v-95.7", "h528", "v-201.6" ] ],
+    [ "btn2:2.r", "esp:GND.1", "black", [ "h29", "v29", "h-259.2" ] ],
+    [ "btn2:1.l", "esp:2", "green", [ "h-28.8", "v-144" ] ]
+  ],
+  "dependencies": {}
+}
