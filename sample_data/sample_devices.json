@@ -1,0 +1,15 @@
+[
+    {
+      "device_id": "WM001",
+      "trust_score": 98,
+      "status": "trusted",
+      "note": "Illustrative sample only; validate field names against the API schema."
+    },
+    {
+      "device_id": "WM002",
+      "trust_score": 42,
+      "status": "suspicious",
+      "note": "Illustrative sample only; not a measured model output."
+    }
+  ]
+  

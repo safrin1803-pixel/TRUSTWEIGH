@@ -1,0 +1,12 @@
+flowchart TD
+    SIM[Instrument / Wokwi Simulation] --> DATA[Device data stream]
+    DATA --> API[Python backend and API routes]
+    API --> TRUST[Trust evaluation logic / BiLSTM model]
+    TRUST --> DECISION{Trust result}
+    DECISION -->|Trusted| MONITOR[Display / monitor device]
+    DECISION -->|Suspicious or untrusted| ALERT[Alert or restriction workflow]
+    API <--> DB[(Configured data store)]
+    API <--> UI[React/Vite dashboard]
+    MONITOR --> UI
+    ALERT --> UI
+    UI --> REPORTS[Analytics and reports]
